@@ -2,7 +2,7 @@ require 'pry'
 class Cli
   attr_reader :choice
   
-  def choice
+  def start
     puts "Which programming language would you like to search jobs for?"
     puts "Please type for example: ruby, python, java, javascript, swift, cplusplus, php"
     choice = gets.chomp.
