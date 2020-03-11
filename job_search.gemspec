@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q a gem for searching for programming jobs online.  School project
   spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "https://github.com/dfragosa
+  spec.homepage      = "git@github.com:dfragosa/job_search.git
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
 
   spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
