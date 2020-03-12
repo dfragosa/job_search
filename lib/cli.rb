@@ -16,7 +16,7 @@ class CLI
     if choice == "exit"
       puts "Good Bye"
     else
-     # load "api.rb"
+      load "api.rb" # in case require not working right
      jobs = API.get_data(choice)
     end
    end
