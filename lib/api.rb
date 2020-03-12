@@ -11,5 +11,6 @@ class API
   binding.pry
   end
 puts "Hi I'm for api class.  Making sure i'm working"
+binding.pry
   
 end
