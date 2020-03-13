@@ -1,5 +1,6 @@
 require 'pry'
 
+
 class CLI
   
   def start
@@ -32,4 +33,4 @@ class CLI
     #cplusplus = HTTParty.get("https://jobs.github.com/positions.json?description=c++&page=1") 
     #php = HTTParty.get("https://jobs.github.com/positions.json?description=php&page=1") 
 end
-    binding.pry
+    CLI.new.start
