@@ -14,12 +14,7 @@ puts "Hi I'm for api class.  Making sure i'm working"
 binding.pry
 
 def get_jobs
-  #_________NOTES________________________________________
-  # this works
-  # response[0]["type"] #=> "full time"
-  # ruby[0].each { |x,y| puts y} #=> gives me all the values for id, type,title etc...
-  # ruby[0].each { |x,y| puts x} gives  all the keys only id, type, title ALL 11 KEYS
-  #_________________________________________________
+  
   ### GIVE USER FIRST 10 TITLES , Company, Location
   
   #responsibe for instantiating #Get_Data and giving it correct
