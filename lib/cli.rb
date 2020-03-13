@@ -8,18 +8,20 @@ class CLI
   end
   
   def languages
- 
+    choice = ""
+    while choice != "exit"
     puts "Please type for example: ruby, python, java, javascript, swift, cplusplus, php"
     choice = gets.strip.chomp
-    if choice == "exit"
-      puts "Good Bye"
-    elsif choice == nil? || choice == "" || choice == " "
-      puts "Please type a language or exit to leave."
-    else
-      load "api.rb" # in case require not working right
-     jobs = API.get_data(choice)
+      if choice == "exit"
+        puts "Good Bye"
+      elsif choice == nil? || choice == "" || choice == " "
+        puts "Please type a language or exit to leave."
+      else
+        load "api.rb" # in case require not working right
+       jobs = API.get_data(choice)
    
    puts "Thank you for choosing #{choice}."
+      end 
     end
   end
     #ruby = HTTParty.get("https://jobs.github.com/positions.json?description=ruby&page=1")
