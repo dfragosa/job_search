@@ -1,7 +1,8 @@
 require 'pry'
-
+require_relative '../lib/api'
 
 class CLI
+  attr_accessor :choice
   
   def start
     puts "Welcome to your job search."
@@ -18,9 +19,8 @@ class CLI
       elsif choice == nil? || choice == "" || choice == " "
         puts "Please type a language or exit to leave."
       else
-        load "api.rb" # in case require not working right
        jobs = API.get_data(choice)
-   
+   binding.pry
    puts "Thank you for choosing #{choice}."
       end 
     end
