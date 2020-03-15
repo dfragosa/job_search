@@ -3,6 +3,6 @@
  # executable / run file as per example in cohort video
 
 require "bundler/setup"
-require_relative "job_search"
+require "job_search"
 
-CLI.new.start 
+JobSearch::CLI.new.start 
