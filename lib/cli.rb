@@ -1,8 +1,7 @@
 require 'pry'
-require_relative '../lib/api'
+#require_relative '../lib/api'
 
 class CLI
-  attr_accessor :choice
   
   def start
     puts "Welcome to your job search."
@@ -13,18 +12,23 @@ class CLI
     choice = ""
     while choice != "exit"
     puts "Please type for example: ruby, python, java, javascript, swift, cplusplus, php"
-    choice = gets.strip.chomp
-      if choice == "exit"
-        puts "Good Bye"
-      elsif choice == nil? || choice == "" || choice == " "
+    choice = gets.strip.chomp.downcase
+      if choice.strip == "exit"
+        exit
+      elsif choice.strip == nil? || choice.strip == "" || choice.strip == " "
         puts "Please type a language or exit to leave."
       else
-       jobs = API.get_data(choice)
-   binding.pry
-   puts "Thank you for choosing #{choice}."
+        load "api.rb" # in case require not working right
+       choice = API.new(choice)
+  # binding.pry
       end 
     end
   end
+  
+  def exit
+    puts "Good Bye"  
+  end
+  
     #ruby = HTTParty.get("https://jobs.github.com/positions.json?description=ruby&page=1")
     #python = HTTParty.get("https://jobs.github.com/positions.json?description=python&page=1") 
     #java = HTTParty.get("https://jobs.github.com/positions.json?description=java&page=1") 
@@ -33,4 +37,3 @@ class CLI
     #cplusplus = HTTParty.get("https://jobs.github.com/positions.json?description=c++&page=1") 
     #php = HTTParty.get("https://jobs.github.com/positions.json?description=php&page=1") 
 end
-    CLI.new.start
