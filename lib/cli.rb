@@ -5,24 +5,39 @@ class CLI
   
   def start
     puts "Welcome to your job search."
+    puts "Please type for example: ruby, python, java, javascript, swift, c, php"
+    choice = gets.strip.chomp.downcase
+    puts "Enter where you want to work: example New York, Florida"
+    place = gets.strip.chomp.downcase
+    load "api.rb"
+    @data = API.get_jobs(choice, place)
+    @objects = Jobs.all
      languages
   end
   
   def languages
-    choice = ""
-    while choice != "exit"
-    puts "Please type for example: ruby, python, java, javascript, swift, cplusplus, php"
-    choice = gets.strip.chomp.downcase
-      if choice.strip == "exit"
-        exit
-      elsif choice.strip == nil? || choice.strip == "" || choice.strip == " "
-        puts "Please type a language or exit to leave."
-      else
-        load "api.rb" # in case require not working right
-       choice = API.new(choice)
-  # binding.pry
-      end 
+    @objects.each.with_index(1) do |job, idx|
+      puts "#{idx}. #{job.title}"
+      #binding.pry
     end
+    #choice = ""
+    #while choice != "exit"
+    #puts "Please type for example: ruby, python, java, javascript, swift, c, php"
+    #choice = gets.strip.chomp.downcase
+    #puts "Enter where you want to work: example New York, Florida"
+    #place = gets.strip.chomp.downcase
+    #@data = API.get_jobs(choice, place)
+    #@objects = Jobs.all
+    #binding.pry
+    #  if choice.strip == "exit"
+    #    exit
+    #  elsif choice.strip == nil? || choice.strip == "" || choice.strip == " "
+    #    puts "Please type a language or exit to leave."
+    #  else
+        #load "api.rb" # in case require not working right
+       
+  # binding.pry
+  #  end
   end
   
   def exit

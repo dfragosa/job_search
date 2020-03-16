@@ -23,5 +23,5 @@ elsif choice.nil?
 puts " Please type a language or exit."
 end
 
-if job_hash.include?(ruby)  puts job_hash
-  if job_has.include?(python) puts job_hash
+#if job_hash.include?(ruby)  puts job_hash
+#  if job_has.include?(python) puts job_hash

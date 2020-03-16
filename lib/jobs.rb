@@ -4,8 +4,12 @@ class Jobs
   
   @@all = []
   
-  def initialize
-    @@all << self
+  
+  
+  def initialize(hash)
+    
+    hash.each {|key, value| self.send(("#{key}="), value)}
+    save
   end
   
   def self.all
@@ -13,7 +17,7 @@ class Jobs
   end
   
    def save
-    @@all << self 
+     @@all << self 
   end 
   
   def self.destroy_all
