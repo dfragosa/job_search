@@ -12,18 +12,18 @@ class CLI
     load "api.rb"
     @data = API.get_jobs(choice, place)
     @objects = Jobs.all
-     languages
+     output1
   end
   
-  def languages
-    puts "////////////////////////////"
-    puts "///Here are the results ///"
-    puts "///////////////////////////"
+  def output1
+    puts "\t\t\t\t////////////////////////////"
+    puts "\t\t\t\t///Here are the results ///"
+    puts "\t\t\t\t///////////////////////////"
     @objects.each.with_index(1) do |job, idx|
       puts "#{idx}. #{job.title} \tCompany Name: #{job.company} \tLocation: #{job.location}"
       puts " To see more info"
-      #binding.pry
-    end
+        #binding.pry
+    end 
   end
     
     #choice = ""
