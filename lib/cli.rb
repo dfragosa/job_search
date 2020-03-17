@@ -16,10 +16,16 @@ class CLI
   end
   
   def languages
+    puts "////////////////////////////"
+    puts "///Here are the results ///"
+    puts "///////////////////////////"
     @objects.each.with_index(1) do |job, idx|
-      puts "#{idx}. #{job.title}"
+      puts "#{idx}. #{job.title} \tCompany Name: #{job.company} \tLocation: #{job.location}"
+      puts " To see more info"
       #binding.pry
     end
+  end
+    
     #choice = ""
     #while choice != "exit"
     #puts "Please type for example: ruby, python, java, javascript, swift, c, php"
@@ -38,7 +44,7 @@ class CLI
        
   # binding.pry
   #  end
-  end
+ 
   
   def exit
     puts "Good Bye"  

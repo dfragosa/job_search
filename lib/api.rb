@@ -9,7 +9,7 @@ class API
    job_obj = {
      title: @job_hash[0]["title"],
      location: @job_hash[0]["location"],
-     # company: @job_hash[0]["company"]
+      company: @job_hash[0]["company"]
      }
    load "jobs.rb"
     Jobs.new(job_obj)
@@ -25,6 +25,7 @@ class API
    }
    load "jobs.rb"
     Jobs.new(job_details)
+    binding.pry
   end    
 end
     
