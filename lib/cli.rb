@@ -4,14 +4,13 @@ require 'pry'
 class CLI
   
   def start
+    choice = ""
     puts "Welcome to your job search."
     puts "Please type for example: ruby, python, java, javascript, swift, c, php"
     choice = gets.strip.chomp.downcase
-    puts "Enter where you want to work: example New York, Florida"
-    place = gets.strip.chomp.downcase
     load "api.rb"
-    @data = API.get_jobs(choice, place)
-    @objects = Jobs.all
+    @data = API.get_jobs(choice)
+   
      output1
   end
   
@@ -19,22 +18,53 @@ class CLI
     puts "\t\t\t\t////////////////////////////"
     puts "\t\t\t\t///Here are the results ///"
     puts "\t\t\t\t///////////////////////////"
-    @objects.each.with_index(1) do |job, idx|
-      puts "#{idx}. #{job.title} \tCompany Name: #{job.company} \tLocation: #{job.location}"
-      puts " To see more info"
-        #binding.pry
-    end 
-  end
+     @objects = Jobs.all
+    @objects.each.with_index do |job, idx|
+      puts "#{idx+ 1}. #{job.title} Company Name: #{job.company} Location: #{job.location}"
+    end
     
+    output2
+  end
+  
+      
+  def output2
+     puts " Enter the number you want to view more info for: "
+     input = gets.chomp.strip.downcase
+    if input == "exit"
+      exit
+      elseif (1..Jobs.all.size).include?(input.to_i)
+    end
+    
+      puts "here's the informantion you selected"
+      puts " ------------------------------------"
+      selected_info = Jobs.all[input.to_i - 1]
+     # binding.pry
+     puts " ***Job Type: #{selected_info.type} \n***How To Apply: #{selected_info.how_to_apply} \n***Company URL: #{selected_info.company_url}"
+     # binding.pry
+   
+  end
+  
+  def output3
+    #description
+    @objects.each.with_index(1) do |job, idx|
+    puts "#{idx}. ***Job Type: #{job.description}"
+      
+    @user_choice = gets.to_i
+    end
+  end
+      
+  def exit
+    puts "Good Bye"  
+  end
+  
+  def all_jobs
+    Jobs.all  
+  end
+  
+   
     #choice = ""
     #while choice != "exit"
-    #puts "Please type for example: ruby, python, java, javascript, swift, c, php"
-    #choice = gets.strip.chomp.downcase
-    #puts "Enter where you want to work: example New York, Florida"
-    #place = gets.strip.chomp.downcase
-    #@data = API.get_jobs(choice, place)
-    #@objects = Jobs.all
-    #binding.pry
+    
     #  if choice.strip == "exit"
     #    exit
     #  elsif choice.strip == nil? || choice.strip == "" || choice.strip == " "
@@ -43,18 +73,6 @@ class CLI
         #load "api.rb" # in case require not working right
        
   # binding.pry
-  #  end
- 
-  
-  def exit
-    puts "Good Bye"  
-  end
-  
-    #ruby = HTTParty.get("https://jobs.github.com/positions.json?description=ruby&page=1")
-    #python = HTTParty.get("https://jobs.github.com/positions.json?description=python&page=1") 
-    #java = HTTParty.get("https://jobs.github.com/positions.json?description=java&page=1") 
-    #javascript =  HTTParty.get("https://jobs.github.com/positions.json?description=javascript&page=1") 
-    #swift = HTTParty.get("https://jobs.github.com/positions.json?description=swift&page=1") 
-    #cplusplus = HTTParty.get("https://jobs.github.com/positions.json?description=c++&page=1") 
-    #php = HTTParty.get("https://jobs.github.com/positions.json?description=php&page=1") 
+  #  end  
+
 end
