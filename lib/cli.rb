@@ -5,14 +5,24 @@ class CLI
   
   def start
     choice = ""
+    while choice != "exit"
     puts "Welcome to your job search."
-    puts "Please type for example: ruby, python, java, javascript, swift, c, php"
+    puts"--------------------------------"
+    puts "Please type for example: ruby, python, java, javascript, swift, c, php or type exit to leave"
     choice = gets.strip.chomp.downcase
+    if choice == "exit"
+      exit
+    elsif choice.strip == nil? || choice.strip == "" || choice.strip == " "
+      choice = gets.strip.chomp.downcase
+    else
     load "api.rb"
     @data = API.get_jobs(choice)
    
      output1
+    end 
+   end
   end
+  
   
   def output1
     puts "\t\t\t\t////////////////////////////"
@@ -34,32 +44,25 @@ class CLI
       exit
       elseif (1..Jobs.all.size).include?(input.to_i)
     end
-    
+      puts "-------------------------------------"
       puts "here's the informantion you selected"
       puts " ------------------------------------"
       selected_info = Jobs.all[input.to_i - 1]
      # binding.pry
-     puts " ***Job Type: #{selected_info.type} \n***How To Apply: #{selected_info.how_to_apply} \n***Company URL: #{selected_info.company_url}"
-     # binding.pry
-   
-  end
-  
-  def output3
-    #description
-    @objects.each.with_index(1) do |job, idx|
-    puts "#{idx}. ***Job Type: #{job.description}"
-      
-    @user_choice = gets.to_i
-    end
+     puts "Job Type: #{selected_info.type}"
+     puts "-----------------------------------"
+     puts "\nHow To Apply: #{selected_info.how_to_apply}"
+     puts "-----------------------------------"
+    puts " \nCompany URL: #{selected_info.company_url}"
   end
       
   def exit
     puts "Good Bye"  
   end
   
-  def all_jobs
-    Jobs.all  
-  end
+  #def all_jobs
+  #  Jobs.all  
+  #end
   
    
     #choice = ""
